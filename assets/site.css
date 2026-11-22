@@ -1,0 +1,30 @@
+@font-face {
+  font-family: "Pretendard Variable";
+  font-weight: 45 920;
+  font-style: normal;
+  font-display: swap;
+  src: url("fonts/PretendardVariable.woff2") format("woff2-variations");
+}
+
+:root {
+  --bg: #000;
+  --fg: #f2f2f2;
+  --dim: #7d838c;
+  --faint: #3a3d42;
+  --blue: #5b9dff;
+  --em: #25d0a4;
+  --hole: #ffb000;
+  --font: "Pretendard Variable", Pretendard, "Apple SD Gothic Neo", "Malgun Gothic", sans-serif;
+}
+
+* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--font);
+  -webkit-font-smoothing: antialiased;
+}
+
+a { color: inherit; }

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>ALEPH</title>
+<link rel="stylesheet" href="assets/site.css">
+<style>
+  body { min-height: 100vh; display: flex; align-items: center; }
+  main { width: min(100% - 48px, 760px); margin: 0 auto; padding: 56px 0; }
+  header { display: flex; align-items: center; gap: 18px; }
+  header img { width: 64px; filter: brightness(0) invert(1); }
+  h1 { margin: 0; font-size: 56px; font-weight: 800; letter-spacing: .05em; line-height: 1; }
+  .what { margin: 18px 0 56px; font-size: 20px; color: var(--dim); }
+  nav { border-top: 2px solid var(--fg); }
+  nav a, nav div {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 16px;
+    padding: 22px 2px;
+    border-bottom: 1px solid var(--faint);
+    font-size: 26px;
+    font-weight: 700;
+    text-decoration: none;
+  }
+  nav span { font-size: 16px; font-weight: 500; color: var(--dim); }
+  nav a:hover { color: var(--blue); }
+  nav div { color: var(--dim); }
+  @media (max-width: 520px) {
+    h1 { font-size: 42px; }
+    header img { width: 48px; }
+    nav a, nav div { font-size: 21px; }
+  }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <img src="assets/aleph.png" alt="">
+    <h1>ALEPH</h1>
+  </header>
+  <p class="what">LLM 에이전트 기반 서사 창작 도구</p>
+  <nav>
+    <a href="slides/">발표 자료 <span>국문인의 밤</span></a>
+    <div>데모 <span>준비 중</span></div>
+    <a href="https://github.com/hwlee-dh/aleph/releases">받는 곳 <span>github.com/hwlee-dh/aleph</span></a>
+  </nav>
+</main>
+</body>
+</html>

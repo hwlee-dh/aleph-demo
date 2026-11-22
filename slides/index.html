@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>ALEPH 발표</title>
+<link rel="stylesheet" href="../assets/site.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div id="stage" class="stage">
+
+  <!-- 화살촉. 장면의 선이 쓴다 -->
+  <svg id="fig" viewBox="0 0 1600 900" aria-hidden="true">
+    <defs>
+      <marker id="ah-fg" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#f2f2f2"/></marker>
+      <marker id="ah-em" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#25d0a4"/></marker>
+      <marker id="ah-blue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#5b9dff"/></marker>
+      <marker id="ah-dim" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#3a3d42"/></marker>    </defs>
+
+  </svg>
+
+  <!-- 장면. deck.js가 steps.js의 sc를 보고 여기에 놓는다 -->
+  <div id="sc"></div>
+  <svg id="wires" viewBox="0 0 1600 900" aria-hidden="true"></svg>
+
+  <!-- 닫는 장 -->
+  <section class="layer close" data-show="L-close">
+    <div class="row r1">
+      <img src="../assets/qr-aleph.png" alt="">
+      <div>
+        <h2>프로젝트</h2>
+        <a class="url" href="https://github.com/hwlee-dh/aleph">github.com/hwlee-dh/aleph</a>
+      </div>
+    </div>
+    <div class="row r2">
+      <img src="../assets/qr-demo.png" alt="">
+      <div>
+        <h2>발표 자료와 데모</h2>
+        <a class="url em" href="https://github.com/hwlee-dh/aleph-demo">github.com/hwlee-dh/aleph-demo</a>
+      </div>
+    </div>
+    <div class="mail">
+      <h2>연락처</h2>
+      <p>hwlee0495@uos.ac.kr</p>
+    </div>
+  </section>
+
+  <div id="prog"></div>
+</div>
+<div id="hint">스와이프해서 다음 장 보기<br>이 슬라이드는 가로 화면에 최적화되어 있습니다</div>
+
+<script src="steps.js"></script>
+<script src="deck.js"></script>
+</body>
+</html>

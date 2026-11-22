@@ -1,0 +1,199 @@
+:root { --warn: #ff6b5e; }
+
+html, body { height: 100%; overflow: hidden; }
+
+body {
+  position: fixed;
+  inset: 0;
+  user-select: none;
+  -webkit-user-select: none;
+  touch-action: manipulation;
+  cursor: default;
+}
+
+/* 16:9 무대. deck.js가 --k로 창에 맞춘다 */
+.stage {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 1600px;
+  height: 900px;
+  transform: translate(-50%, -50%) scale(var(--k, 1));
+  transform-origin: center;
+  overflow: hidden;
+}
+
+#fig {
+  position: absolute;
+  inset: 0;
+  width: 1600px;
+  height: 900px;
+  overflow: visible;
+}
+
+/* 단계에 따라 켜고 끄는 것 */
+[data-show] { opacity: 0; pointer-events: none; }
+[data-show].on { opacity: var(--o, 1); pointer-events: auto; }
+.stage.ready [data-show] { transition: opacity .45s ease; }
+
+/* ---- 장면. deck.js가 자리와 크기를 넣는다 */
+#sc { position: absolute; left: 0; top: 0; width: 0; height: 0; }
+
+.stage { --t: .75s; --to: .45s; --e: cubic-bezier(.2, .7, .2, 1); }
+.stage.quick { --t: .34s; --to: .22s; }
+
+.ac { position: absolute; left: 0; top: 0; box-sizing: border-box; opacity: 0; pointer-events: none; }
+.ac.live { pointer-events: auto; }
+.stage.ready .ac {
+  transition:
+    transform var(--t) var(--e), width var(--t) var(--e), height var(--t) var(--e),
+    font-size var(--t) var(--e), font-weight var(--t) var(--e),
+    opacity var(--to) ease, color .4s, background-color .4s, border-color .4s;
+  transition-delay: var(--d, 0ms);
+}
+
+/* 글 */
+.k-t { z-index: 3; font-weight: 700; line-height: 1.4; white-space: pre; }
+.k-t.wrap { white-space: pre-line; word-break: keep-all; }
+.ta-left { text-align: left; }
+.ta-center { text-align: center; }
+.ta-right { text-align: right; }
+.k-t.dim { color: var(--dim); }
+.k-t.dim b { color: var(--fg); font-weight: 800; }
+.k-t.gray { color: #8b9099; }
+.k-t.blue { color: var(--blue); }
+.k-t.em { color: var(--em); }
+.k-t.warn { color: var(--warn); }
+.k-t.wide { letter-spacing: .05em; }
+.k-t.tl { text-align: left; }
+.k-t b { transition: color .4s, font-weight .4s; }
+.k-t.plain b { font-weight: inherit; }
+.k-t.split { color: var(--dim); }
+.k-t.split b { color: var(--fg); font-weight: 800; }
+.k-t.doc { color: #1c9c7c; }
+.k-t.ent { color: #1c9c7c; }
+.k-t.ent span { font-weight: 500; opacity: .75; }
+.k-t.ent.on { color: var(--em); }
+.k-t.doc b { color: var(--em); font-weight: 700; }
+.k-t.pass span { color: #c5c9cf; }
+.k-t.pass b { font-size: 24px; font-weight: 700; line-height: 36px; }
+.k-t.mono { font-family: ui-monospace, Consolas, "Courier New", monospace; }
+/* 써 나가는 줄. 너비가 왼쪽에서부터 열린다 */
+.k-t.type { white-space: pre; overflow: hidden; }
+.stage.ready .k-t.type { transition: width 1.2s linear, opacity .2s ease, color .4s, transform var(--t) var(--e); }
+/* 상자의 윗변에 걸쳐 놓는 이름 */
+.k-t.tag { background: var(--bg); padding: 0 8px; margin-left: -8px; line-height: 1.2; }
+/* 원고에서 짚은 대목, 사용자가 쓴 대목 */
+.k-t mark { background: #f0d264; color: #111; padding: 2px 0; }
+.k-t .me { color: var(--fg); }
+/* 장면 번호 */
+.k-t .no { display: inline-block; width: 36px; color: #8b9099; }
+/* 파일 이름 앞의 종이 */
+.k-t .fi { display: inline-block; box-sizing: border-box; width: 16px; height: 20px; margin-right: 12px; border: 2px solid currentColor; border-radius: 2px; vertical-align: -3px; }
+
+/* 상자 */
+.k-b { z-index: 1; border: 3px solid var(--fg); }
+.k-b.solid { background: var(--bg); }
+.k-b.thin { border-width: 2px; }
+.k-b.em { border-color: var(--em); }
+.k-b.blue { border-color: var(--blue); }
+.k-b.under { z-index: 0; }
+.k-b.dash { border-style: dashed; border-color: #8b9099; }
+.k-b.miss { border-color: var(--warn); background: rgba(255, 107, 94, .1); }
+.k-t code { font-family: inherit; color: var(--em); }
+
+/* 막대: 글 한 줄을 줄여 그린 것 */
+.k-r { z-index: 2; background: var(--fg); }
+.k-r.sys { background: #8b9099; }
+.k-r.inf { background: var(--em); }
+.k-r.ans { background: var(--blue); }
+.k-r.sum { background: transparent; border: 2px solid var(--fg); }
+.k-r.faint { background: var(--faint); }
+.k-r.out { background: var(--warn); }
+.k-r.cut { background: transparent; border: 2px dashed var(--warn); }
+.k-r.tint { z-index: 0; background: rgba(91, 157, 255, .17); }
+.k-r.hl { z-index: 0; background: rgba(91, 157, 255, .24); }
+
+/* 선 (SVG 경로) */
+#wires { position: absolute; left: 0; top: 0; width: 1600px; height: 900px; overflow: visible; pointer-events: none; z-index: 2; }
+.k-w { fill: none; stroke: var(--fg); stroke-linecap: round; opacity: 0; }
+.stage.ready .k-w {
+  transition: d var(--t) var(--e), opacity var(--to) ease, stroke .4s, stroke-width .4s, stroke-dashoffset .8s ease;
+  transition-delay: var(--d, 0ms);
+}
+.k-w.head { marker-end: url(#ah-fg); }
+.k-w.blue { stroke: var(--blue); }
+.k-w.blue.head { marker-end: url(#ah-blue); }
+.k-w.em { stroke: var(--em); }
+.k-w.em.head { marker-end: url(#ah-em); }
+.k-w.dim { stroke: var(--faint); }
+.k-w.dim.head { marker-end: url(#ah-dim); }
+/* 양쪽으로 오가는 선 */
+.k-w.both { marker-start: url(#ah-fg); }
+.k-w.dim.both { marker-start: url(#ah-dim); }
+
+/* 화살표 */
+.k-a {
+  z-index: 1;
+  height: 16px;
+  margin-top: -8px;
+  transform-origin: 0 50%;
+  background: linear-gradient(var(--fg), var(--fg)) left center / calc(100% - 10px) 3px no-repeat;
+}
+.k-a::after {
+  content: "";
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 8px solid transparent;
+  border-left: 14px solid var(--fg);
+  border-right: 0;
+}
+
+.k-i { z-index: 1; filter: brightness(0) invert(1); }
+.k-i.photo { filter: none; outline: 1px solid #2c2f34; }
+
+/* 넘쳤을 때 */
+.s-shake #sc { animation: shake .55s ease-out; }
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  15% { transform: translateX(-9px); }
+  30% { transform: translateX(8px); }
+  45% { transform: translateX(-6px); }
+  60% { transform: translateX(5px); }
+  80% { transform: translateX(-2px); }
+}
+
+/* ---- 진행 */
+#prog { position: absolute; left: 0; bottom: 0; height: 3px; width: 0; background: var(--blue); transition: width .3s; }
+
+/* ---- 그림 밖의 장들 */
+.layer { position: absolute; inset: 0; }
+
+.close .row { position: absolute; left: 150px; display: flex; align-items: center; gap: 56px; }
+.close .r1 { top: 110px; }
+.close .r2 { top: 390px; }
+.close img { width: 230px; height: 230px; }
+.close h2 { margin: 0 0 10px; font-size: 28px; font-weight: 600; color: var(--dim); }
+.close .url { display: block; font-size: 56px; font-weight: 800; color: var(--blue); text-decoration: none; }
+.close .url.em { color: var(--em); }
+.close .mail { position: absolute; left: 436px; top: 690px; }
+.close p { margin: 0; font-size: 40px; font-weight: 700; }
+
+/* 세로로 든 폰 */
+#hint { display: none; }
+@media (orientation: portrait) and (max-width: 700px) {
+  #hint {
+    display: block;
+    position: fixed;
+    left: 0;
+    right: 0;
+    bottom: 28px;
+    text-align: center;
+    font-size: 13px;
+    color: var(--dim);
+  }
+}
+
+/* 편집기의 작은 정지 화면 */
+.stage.static, .stage.static * { transition: none !important; animation: none !important; }
