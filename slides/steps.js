@@ -50,11 +50,11 @@ const TOPIC = '생성형 AI를 활용한 문학창작 연구';
 const WHO = '국어국문학과 2022620021 이현우 · 지도교수 유승환 · 멘토 김민경';
 
 // 발표를 시작하기 전, 쉬는 시간에 띄워 두는 화면
-const SITE = 'github.com/hwlee-dh/aleph-demo';
+const SITE = 'hwlee-dh.github.io/aleph-demo';
 const scWait = {
   wt: T(150, 400, '발표 자료', { al: 'lm', fs: 120, fw: 800 }),
   wu: T(156, 520, SITE, { al: 'lm', fs: 44, fw: 600, c: 'blue' }),
-  wq: { k: 'i', src: '../assets/qr-demo.png', x: 1250, y: 450, w: 380, c: 'photo' },
+  wq: { k: 'i', src: '../assets/qr-page.png', x: 1250, y: 450, w: 380, c: 'photo' },
 };
 
 // 표지. 과목과 사람 → 주제 → 주제만 남고 그 밑에 한 줄 설명 → 영문 이름 → 두문자가 서며 ALEPH

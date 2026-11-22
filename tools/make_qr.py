@@ -2,6 +2,7 @@
 
     python tools/make_qr.py https://github.com/hwlee-dh/aleph qr-aleph
     python tools/make_qr.py https://github.com/hwlee-dh/aleph-demo qr-demo
+    python tools/make_qr.py https://hwlee-dh.github.io/aleph-demo/ qr-page
 
 OpenCV 가 있어야 한다. 만든 그림을 다시 읽어 같은 주소가 나오는지 확인한 뒤 assets/이름.png 에 쓴다.
 """
