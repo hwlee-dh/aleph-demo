@@ -6,45 +6,62 @@
 <title>ALEPH</title>
 <link rel="stylesheet" href="assets/site.css">
 <style>
-  body { min-height: 100vh; display: flex; align-items: center; }
-  main { width: min(100% - 48px, 760px); margin: 0 auto; padding: 56px 0; }
-  header { display: flex; align-items: center; gap: 18px; }
-  header img { width: 64px; filter: brightness(0) invert(1); }
-  h1 { margin: 0; font-size: 56px; font-weight: 800; letter-spacing: .05em; line-height: 1; }
-  .what { margin: 18px 0 56px; font-size: 20px; color: var(--dim); }
-  nav { border-top: 2px solid var(--fg); }
-  nav a, nav div {
+  body {
+    min-height: 100vh;
+    min-height: 100svh;
+    display: grid;
+    place-items: center;
+  }
+  main {
+    width: min(calc(100% - 40px), 600px);
+    padding: 48px 0;
+    text-align: center;
+    word-break: keep-all;
+  }
+  header { margin-bottom: clamp(32px, 6vh, 56px); }
+  header p {
+    margin: 18px 0 0;
+    color: #abb0b8;
+    font-size: clamp(15px, 2.5vw, 19px);
+    line-height: 1.6;
+  }
+  h1 {
     display: flex;
-    align-items: baseline;
-    justify-content: space-between;
-    gap: 16px;
-    padding: 22px 2px;
+    align-items: center;
+    justify-content: center;
+    gap: clamp(12px, 2vw, 18px);
+    margin: 0;
+    font-size: clamp(42px, 6vw, 56px);
+    font-weight: 800;
+    letter-spacing: .05em;
+    line-height: 1;
+  }
+  h1 img { width: clamp(48px, 7vw, 64px); filter: brightness(0) invert(1); }
+  nav { border-top: 1px solid var(--fg); }
+  nav a {
+    display: block;
+    padding: 18px 12px;
     border-bottom: 1px solid var(--faint);
-    font-size: 26px;
-    font-weight: 700;
+    font-size: clamp(19px, 3vw, 24px);
+    font-weight: 600;
+    line-height: 1.4;
     text-decoration: none;
   }
-  nav span { font-size: 16px; font-weight: 500; color: var(--dim); }
-  nav a:hover { color: var(--blue); }
-  nav div { color: var(--dim); }
-  @media (max-width: 520px) {
-    h1 { font-size: 42px; }
-    header img { width: 48px; }
-    nav a, nav div { font-size: 21px; }
-  }
+  nav a:hover, nav a:focus-visible { color: var(--blue); }
+  nav a:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
 </style>
 </head>
 <body>
 <main>
   <header>
-    <img src="assets/aleph.png" alt="">
-    <h1>ALEPH</h1>
+    <h1><img src="assets/aleph.png" alt="">ALEPH</h1>
+    <p>LLM 에이전트 기반 서사 창작 도구</p>
   </header>
-  <p class="what">LLM 에이전트 기반 서사 창작 도구</p>
-  <nav>
-    <a href="slides/">발표 자료 <span>국문인의 밤</span></a>
-    <div>데모 <span>준비 중</span></div>
-    <a href="https://github.com/hwlee-dh/aleph/releases">받는 곳 <span>github.com/hwlee-dh/aleph</span></a>
+  <nav aria-label="프로젝트 자료">
+    <a href="slides/">발표 자료</a>
+    <a href="https://hwlee-dh.github.io/aleph-demo-page/">데모</a>
+    <a href="https://github.com/hwlee-dh/aleph">프로젝트 GitHub</a>
+    <a href="aleph-paper.pdf">최종 보고서 (PDF)</a>
   </nav>
 </main>
 </body>
