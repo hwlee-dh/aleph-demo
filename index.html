@@ -49,6 +49,19 @@
   }
   nav a:hover, nav a:focus-visible { color: var(--blue); }
   nav a:focus-visible { outline: 2px solid currentColor; outline-offset: -2px; }
+  footer {
+    margin-top: 32px;
+    color: #abb0b8;
+    font-size: 14px;
+    line-height: 1.7;
+  }
+  footer p { margin: 0; }
+  footer p + p { margin-top: 4px; }
+  .advisers { display: inline-block; }
+  @media (max-width: 440px) {
+    .advisers { display: block; }
+    .advisers .separator { display: none; }
+  }
 </style>
 </head>
 <body>
@@ -63,6 +76,10 @@
     <a href="https://github.com/hwlee-dh/aleph">프로젝트 GitHub</a>
     <a href="aleph-paper.pdf">최종 보고서 (PDF)</a>
   </nav>
+  <footer>
+    <p>2026년 1학기 학생미래설계학기 연구인턴십</p>
+    <p>국어국문학과 2022620021 이현우 <span class="advisers"><span class="separator">· </span>지도교수 유승환 · 멘토 김민경</span></p>
+  </footer>
 </main>
 </body>
 </html>
